@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Sunnfolk_Complete/Scenes/Level_1.unity
+    guid: dff6b8ca3be6849bab0b327f0c840162
+  - enabled: 1
+    path: Assets/Sunnfolk_Complete/Scenes/Level_2.unity
+    guid: 2e401e11b854f43c3944dfbc616d0f45
   m_configObjects: {}
