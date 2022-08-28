@@ -1,15 +1,12 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
 {
-    
-    public int score = 0;
-    public int goal;
+
+    public int score;
+    public int goal = 10;
     [Space(5f)]
     
     public float speed = 3f;
@@ -30,19 +27,19 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateGoalManager()
     {
-        if (score >= goal)
-        {
-            score = 0;
-            SceneManager.LoadScene("Level_2");
-        }
+        // CHECK IF SCORE IS GREATER OR EQUAL TO GOAL
+        if (score < goal) return;
+        
+        score = 0;
+        SceneManager.LoadScene($"EndScreen");
     }
 
-    private void OnCollisionEnter2D(Collision2D col)
+    private void OnTriggerEnter2D(Collider2D col)
     {
         UpdatePickup(col);
     }
 
-    private void UpdatePickup(Collision2D col)
+    private void UpdatePickup(Collider2D col)
     {
         print($"I Collided with {col.transform.name}");
         
@@ -65,7 +62,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // APPLY INPUT & SPEED TO MOVEMENT
-        var move = (m_MoveVector * speed ) * Time.deltaTime;
+        var move = m_MoveVector * (speed * Time.deltaTime);
         transform.Translate(move);
     }
 }

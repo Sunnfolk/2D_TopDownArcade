@@ -1,27 +1,31 @@
+using GD.MinMaxSlider;
 using UnityEngine;
 
 public class CoinRotation : MonoBehaviour
 {
     // Fix entire system to Set y Rotation to a random degree between 0 and 359
-    [SerializeField] private float _rotationSpeed = 0.01f;
-    private bool _canRotate = false;
+    // [MinMaxSlider(0, 1)] public Vector2 test;
+    
+    private float m_RotationSpeed = 0.05f;
+    private bool m_CanRotate;
  
-    private float timer;
+    private float m_Timer;
     // Start is called before the first frame update
     private void Start()
     {
-        timer = Random.Range(0f,5f) + Time.time;
+        m_Timer = Random.Range(0f,1f) + Time.time;
+        m_RotationSpeed = Random.Range(0.01f, 0.1f);
     }
 
     // Update is called once per frame
     private void Update()
     {
-        if (Time.time > timer) { _canRotate = true; }
+        if (Time.time > m_Timer) { m_CanRotate = true; }
  
         // Rotation
-        if (_canRotate)
-        {
-            transform.eulerAngles = new Vector3(0f,transform.eulerAngles.y + _rotationSpeed, 0f);
-        }
+        if (!m_CanRotate) return;
+        
+        var transform1 = transform;
+        transform1.eulerAngles = new Vector3(0f,transform1.eulerAngles.y + m_RotationSpeed, 0f);
     }
 }
