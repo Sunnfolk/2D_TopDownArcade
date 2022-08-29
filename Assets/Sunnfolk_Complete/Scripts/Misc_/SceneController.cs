@@ -1,21 +1,28 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
-public class SceneController : MonoBehaviour
+namespace Sunnfolk_Complete.Scripts.Misc_
 {
-    public void LoadScene(string scene)
+    public class SceneController : MonoBehaviour
     {
-        SceneManager.LoadScene(scene);
-    }
+        public void LoadScene(string scene)
+        {
+            SceneManager.LoadScene(scene);
+        }
 
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
+        public void QuitGame()
+        {
+            Application.Quit();
+        }
 
-    public void ReloadScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        public void ReloadScene()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        public void GoToStart()
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 }
