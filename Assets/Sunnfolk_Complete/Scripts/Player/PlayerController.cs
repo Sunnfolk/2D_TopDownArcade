@@ -1,3 +1,5 @@
+using System;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -12,7 +14,13 @@ namespace Sunnfolk_Complete.Scripts.Player
     
         public float speed = 3f;
         public bool normaliseInput = true;
+        
+        
+        [SerializeField] private GameObject projectile;
+        [SerializeField] private float ShootTimeBuffer;
+        private float shootTimer;
         private Vector2 m_MoveVector;
+        
 
         private void Start()
         {
@@ -24,6 +32,19 @@ namespace Sunnfolk_Complete.Scripts.Player
         {
             UpdateMovement();
             UpdateGoalManager();
+
+            //if (m_MoveVector == Vector2.zero) return;
+            
+           
+            if (/*Keyboard.current.spaceKey.isPressed &&*/ Time.time > shootTimer)
+            {
+                var clone = Instantiate(projectile, transform.position, quaternion.identity);
+                clone.TryGetComponent(out ProjectileController projectileC);
+                projectileC.direction = m_MoveVector;
+                
+                Destroy(clone, 2f);
+                shootTimer = Time.time + ShootTimeBuffer;
+            }
         }
 
         private void UpdateGoalManager()

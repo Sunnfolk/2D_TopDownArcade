@@ -1407,6 +1407,18 @@ PrefabInstance:
       propertyPath: speed
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 2804003979552362839, guid: dd2b89683b6944180936fc6c2f464603, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 7667118236576899421, guid: 8cb044f13f05d424297fa0ee4fed5b2a, type: 3}
+    - target: {fileID: 2804003979552362839, guid: dd2b89683b6944180936fc6c2f464603, type: 3}
+      propertyPath: shootTimer
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804003979552362839, guid: dd2b89683b6944180936fc6c2f464603, type: 3}
+      propertyPath: ShootTimeBuffer
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2804003979552362842, guid: dd2b89683b6944180936fc6c2f464603, type: 3}
       propertyPath: m_Name
       value: Player
