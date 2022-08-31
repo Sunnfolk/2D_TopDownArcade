@@ -1,3 +1,4 @@
+using Sunnfolk_Complete.Scripts.Enemy;
 using UnityEngine;
 
 namespace Sunnfolk_Complete.Scripts.Player

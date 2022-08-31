@@ -140,9 +140,9 @@ MonoBehaviour:
   enemyMoveSpeed: 3
   directionUpdateInt: 2
   enemyHealth: 3
-  _FullHealth: {r: 1, g: 0, b: 0.43529412, a: 1}
-  _Bruised: {r: 0.5849056, g: 0.0744927, b: 0.21314459, a: 1}
-  _Injured: {r: 0.4339623, g: 0.079755925, b: 0, a: 1}
+  fullHealth: {r: 1, g: 0, b: 0.43529412, a: 1}
+  bruised: {r: 0.6603774, g: 0, b: 0.30817613, a: 1}
+  injured: {r: 0.46226418, g: 0.09245285, b: 0, a: 1}
 --- !u!58 &3936452806971384156
 CircleCollider2D:
   m_ObjectHideFlags: 0

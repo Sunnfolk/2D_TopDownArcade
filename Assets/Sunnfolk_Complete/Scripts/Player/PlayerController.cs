@@ -84,12 +84,8 @@ namespace Sunnfolk_Complete.Scripts.Player
             if (score < goal) return;
         
             score = 0;
-            SceneManager.LoadScene($"EndScreen");
+           // SceneManager.LoadScene($"EndScreen");
         }
-
-     
-
-      
 
         private void UpdateMovement()
         {
