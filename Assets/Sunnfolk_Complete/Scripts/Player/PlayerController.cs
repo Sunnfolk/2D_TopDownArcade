@@ -35,6 +35,7 @@ namespace Sunnfolk_Complete.Scripts.Player
             UpdateMovement();
             UpdateGoalManager();
             UpdateShooting();
+            print(score);
         }
         
         private void OnTriggerEnter2D(Collider2D col)
@@ -49,8 +50,6 @@ namespace Sunnfolk_Complete.Scripts.Player
         
         private void UpdatePickup(Collider2D col)
         {
-            print($"I Collided with {col.transform.name}");
-        
             if (!col.transform.CompareTag($"Complete/Coin")) return;
         
             score++;

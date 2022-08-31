@@ -51,12 +51,12 @@ namespace Sunnfolk_Complete.Scripts.Enemy
             {
                 _spriteRenderer.color = injured;
             }
-            else if (enemyHealth == 0)
+            else
             {
                 _gameController.enemyNumber--;
                 Destroy(gameObject);
             }
-        
+
             /*if (Time.frameCount % frameInterval == 0)
             {
               m_MoveDirection = (transform.position - m_TargetTrans.position).normalized;

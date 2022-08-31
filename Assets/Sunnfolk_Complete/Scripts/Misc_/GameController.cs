@@ -10,17 +10,23 @@ namespace Sunnfolk_Complete.Scripts.Misc_
         public int scoreNumber;
 
         public int Goal;
+
+        private PlayerController _controller;
         
-        private void Awake()
+        private void Start()
         {
             enemyNumber = GameObject.FindGameObjectsWithTag("Enemy").Length;
+            
             GameObject.Find("Player").TryGetComponent(out PlayerController playerController);
-            scoreNumber = playerController.score;
+            _controller = playerController;
+            scoreNumber = _controller.score;
         }
 
         // Update is called once per frame
         public void Update()
         {
+            scoreNumber = _controller.score;
+            
             if (scoreNumber >= Goal && enemyNumber <= 0)
             {
                 SceneManager.LoadScene("EndScreen");
