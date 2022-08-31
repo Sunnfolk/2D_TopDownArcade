@@ -13,19 +13,20 @@ namespace Sunnfolk_Complete.Scripts.Player
     
         public float speed = 3f;
         public bool normaliseInput = true;
-        
+        public bool RelativeProjectileSpeed = true;
         
         [SerializeField] private GameObject projectile;
         [SerializeField] private float shootTimeBuffer;
-        private float m_ShootTimer;
-        private Vector2 m_MoveVector;
-        private Vector2 m_ShootVector;
-        
+        private float _mShootTimer;
+        private Vector2 _mMoveVector;
+        private Vector2 _mShootVector;
+
+        public Vector2 move;
 
         private void Start()
         {
             score = 0;
-            m_ShootVector = Vector2.right;
+            _mShootVector = Vector2.right;
         }
 
         // Update is called once per frame
@@ -36,19 +37,27 @@ namespace Sunnfolk_Complete.Scripts.Player
 
             //if (m_MoveVector == Vector2.zero) return;
 
-            if (m_MoveVector != Vector2.zero)
+            UpdateShooting();
+        }
+
+        private void UpdateShooting()
+        {
+            if (_mMoveVector != Vector2.zero)
             {
-                m_ShootVector = m_MoveVector;
+                _mShootVector = _mMoveVector;
             }
-           
-            if (/*Keyboard.current.spaceKey.isPressed &&*/ Time.time > m_ShootTimer)
+
+            if (Keyboard.current.spaceKey.wasPressedThisFrame && Time.time > _mShootTimer)
             {
                 var clone = Instantiate(projectile, transform.position, quaternion.identity);
                 clone.TryGetComponent(out ProjectileController projectileC);
-                projectileC.direction = m_ShootVector;
-                
+                projectileC.direction = _mShootVector;
+
+                projectileC.relativeSpeed = RelativeProjectileSpeed && _mMoveVector != Vector2.zero ? move : Vector2.zero;
+
+
                 Destroy(clone, 2f);
-                m_ShootTimer = Time.time + shootTimeBuffer;
+                _mShootTimer = Time.time + shootTimeBuffer;
             }
         }
 
@@ -64,6 +73,11 @@ namespace Sunnfolk_Complete.Scripts.Player
         private void OnTriggerEnter2D(Collider2D col)
         {
             UpdatePickup(col);
+            
+            if (col.transform.CompareTag($"Enemy"))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
         }
 
         private void UpdatePickup(Collider2D col)
@@ -79,18 +93,18 @@ namespace Sunnfolk_Complete.Scripts.Player
         private void UpdateMovement()
         {
             // GET INPUT
-            m_MoveVector.x = (Keyboard.current.aKey.isPressed ? -1f : 0f) + (Keyboard.current.dKey.isPressed ? 1f : 0f);
-            m_MoveVector.y = (Keyboard.current.sKey.isPressed ? -1f : 0f) + (Keyboard.current.wKey.isPressed ? 1f : 0f);
+            _mMoveVector.x = (Keyboard.current.aKey.isPressed ? -1f : 0f) + (Keyboard.current.dKey.isPressed ? 1f : 0f);
+            _mMoveVector.y = (Keyboard.current.sKey.isPressed ? -1f : 0f) + (Keyboard.current.wKey.isPressed ? 1f : 0f);
 
             // NORMALISE Vector INPUT
-            if (normaliseInput && m_MoveVector.magnitude > 1)
+            if (normaliseInput && _mMoveVector.magnitude > 1)
             {
-                m_MoveVector = m_MoveVector.normalized;
+                _mMoveVector = _mMoveVector.normalized;
             }
 
             // APPLY INPUT & SPEED TO MOVEMENT
-            var move = m_MoveVector * (speed * Time.deltaTime);
-            transform.Translate(move);
+            move = _mMoveVector * speed;
+            transform.Translate(move * Time.deltaTime);
         
         }
     }

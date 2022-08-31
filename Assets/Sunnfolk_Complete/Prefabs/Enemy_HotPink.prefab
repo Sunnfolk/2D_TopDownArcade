@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 2673073901035018234}
   - component: {fileID: 2673073901035018233}
   - component: {fileID: 2673073901035018237}
+  - component: {fileID: 3936452806971384156}
   m_Layer: 0
   m_Name: Enemy_HotPink
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,7 +98,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -137,4 +138,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyMoveSpeed: 3
-  frameInterval: 1
+  directionUpdateInt: 2
+  enemyHealth: 3
+  _FullHealth: {r: 1, g: 0, b: 0.43529412, a: 1}
+  _Bruised: {r: 0.5849056, g: 0.0744927, b: 0.21314459, a: 1}
+  _Injured: {r: 0.4339623, g: 0.079755925, b: 0, a: 1}
+--- !u!58 &3936452806971384156
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2673073901035018232}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.6
