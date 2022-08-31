@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8432507335421154352
 SpriteRenderer:
@@ -95,11 +95,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8432507335421154353}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf5285693bfc541c59a752a85d61a8f4, type: 3}
+  m_Script: {fileID: 11500000, guid: 2dffa1ece48434b5dbd7f65aabf01096, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  test: {x: 0.21, y: 0.5633792}
-  rotationSpeed: 0.05
 --- !u!58 &2355105147914763189
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ namespace Sunnfolk_Complete.Scripts.Player
     
         public float speed = 3f;
         public bool normaliseInput = true;
-        public bool RelativeProjectileSpeed = true;
+        public bool relativeProjectileSpeed = true;
         
         [SerializeField] private GameObject projectile;
         [SerializeField] private float shootTimeBuffer;
@@ -34,10 +34,27 @@ namespace Sunnfolk_Complete.Scripts.Player
         {
             UpdateMovement();
             UpdateGoalManager();
-
-            //if (m_MoveVector == Vector2.zero) return;
-
             UpdateShooting();
+        }
+        
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            UpdatePickup(col);
+            
+            if (col.transform.CompareTag($"Enemy"))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+        }
+        
+        private void UpdatePickup(Collider2D col)
+        {
+            print($"I Collided with {col.transform.name}");
+        
+            if (!col.transform.CompareTag($"Complete/Coin")) return;
+        
+            score++;
+            Destroy(col.gameObject);
         }
 
         private void UpdateShooting()
@@ -53,7 +70,7 @@ namespace Sunnfolk_Complete.Scripts.Player
                 clone.TryGetComponent(out ProjectileController projectileC);
                 projectileC.direction = _mShootVector;
 
-                projectileC.relativeSpeed = RelativeProjectileSpeed && _mMoveVector != Vector2.zero ? move : Vector2.zero;
+                projectileC.relativeSpeed = relativeProjectileSpeed && _mMoveVector != Vector2.zero ? move : Vector2.zero;
 
 
                 Destroy(clone, 2f);
@@ -70,25 +87,9 @@ namespace Sunnfolk_Complete.Scripts.Player
             SceneManager.LoadScene($"EndScreen");
         }
 
-        private void OnTriggerEnter2D(Collider2D col)
-        {
-            UpdatePickup(col);
-            
-            if (col.transform.CompareTag($"Enemy"))
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            }
-        }
+     
 
-        private void UpdatePickup(Collider2D col)
-        {
-            print($"I Collided with {col.transform.name}");
-        
-            if (!col.transform.CompareTag($"Complete/Coin")) return;
-        
-            score++;
-            Destroy(col.gameObject);
-        }
+      
 
         private void UpdateMovement()
         {
