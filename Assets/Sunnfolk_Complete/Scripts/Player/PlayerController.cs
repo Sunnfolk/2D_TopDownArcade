@@ -65,7 +65,7 @@ namespace Sunnfolk_Complete.Scripts.Player
 
             if (Keyboard.current.spaceKey.wasPressedThisFrame && Time.time > _mShootTimer)
             {
-                var clone = Instantiate(projectile, transform.position, quaternion.identity);
+                var clone = Instantiate(projectile, transform.position, Quaternion.identity);
                 clone.TryGetComponent(out ProjectileController projectileC);
                 projectileC.direction = _mShootVector;
 

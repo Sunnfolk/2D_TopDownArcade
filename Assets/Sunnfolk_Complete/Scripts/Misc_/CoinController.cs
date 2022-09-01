@@ -23,12 +23,13 @@ namespace Sunnfolk_Complete.Scripts.Misc_
         
         private void InitialiseRotation()
         {
-            Vector2Int randomRot = new Vector2Int(Random.Range(0, 180), Random.Range(0, 180));
+            float randomRotX = Random.Range(0, 180);
+            float randomRotY = Random.Range(0, 180);
         
-            transform.rotation = new Quaternion(0, randomRot.x, 0, randomRot.y);
+            transform.rotation = new Quaternion(0, randomRotX, 0, randomRotY);
 
             _timer = Random.Range(0f, 0.3f) + Time.time;
-            _rotationSpeed = Random.Range(0.01f, 0.1f);
+            _rotationSpeed = Random.Range(0.01f, 0.10f);
         }
 
         private void UpdateRotation()

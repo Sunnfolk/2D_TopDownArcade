@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,7 +13,11 @@ namespace Sunnfolk_Complete.Scripts.Misc_
 
         public void QuitGame()
         {
+            #if UNITY_EDITOR
+            EditorApplication.isPlaying = false;
+            #else
             Application.Quit();
+            #endif
         }
 
         public void ReloadScene()
