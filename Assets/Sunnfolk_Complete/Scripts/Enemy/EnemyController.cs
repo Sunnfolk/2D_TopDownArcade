@@ -19,7 +19,7 @@ namespace Sunnfolk_Complete.Scripts.Enemy
         public Color bruised;
         public Color injured;
 
-        public Color[] healthState;
+        //public Color[] healthState;
     
         private float _timer;
         private GameObject _target;
@@ -54,12 +54,13 @@ namespace Sunnfolk_Complete.Scripts.Enemy
         private void UpdateHealth()
         {
             /*
-            for (int i = 2; i < healthState.Length; i++)
+            for (int i = 2; i > -1; i--)
             {
                 if (enemyHealth == i)
                 {
                     _spriteRenderer.color = healthState[i];
                 }
+                else if (enemyHealth <= 0) Destroy(gameObject)
             }
             */
 
