@@ -139,12 +139,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyMoveSpeed: 3
   directionUpdateInt: 2
-  lookRadius: 8
+  lookRadius: 30
   enemyHealth: 3
   fullHealth: {r: 1, g: 0, b: 0.43529412, a: 1}
   bruised: {r: 0.6603774, g: 0, b: 0.30817613, a: 1}
   injured: {r: 0.46226418, g: 0.09245285, b: 0, a: 1}
-  healthState: []
 --- !u!1 &8963499097425014613
 GameObject:
   m_ObjectHideFlags: 0

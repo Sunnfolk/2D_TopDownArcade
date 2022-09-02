@@ -85,15 +85,25 @@ namespace Sunnfolk_Complete.Scripts.Enemy
 
         private void UpdateMovement()
         {
+            var position1 = transform.position;
+            var position2 = _target.transform.position;
+            
+            float distance = Vector2.Distance(position2, position1);
+            RaycastHit2D hit = Physics2D.Raycast(position1, (position2 - position1));
+            
+            Debug.DrawRay(position1, position2 - position1, Color.cyan);
+            
+            print(hit.collider.name);
+            
+            if (hit.collider == null) return;
+            if (distance > lookRadius && !hit.collider.CompareTag("Player")) return;
+            
             if (Time.time > _timer)
             {
                 _moveDirection = (_target.transform.position - transform.position).normalized;
                 _timer = Time.time + directionUpdateInt;
             }
-            
-            var distance = Vector2.Distance(_target.transform.position, transform.position);
-            if (distance > lookRadius) return;
-            
+
             transform.Translate(_moveDirection * (enemyMoveSpeed * Time.deltaTime));
         }
 
