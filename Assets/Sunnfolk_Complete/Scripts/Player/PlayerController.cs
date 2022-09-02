@@ -8,9 +8,7 @@ namespace Sunnfolk_Complete.Scripts.Player
     public class PlayerController : MonoBehaviour
     {
         public int score;
-        public int goal = 10;
         [Space(5f)]
-    
         public float speed = 3f;
         public bool normaliseInput = true;
         public bool relativeProjectileSpeed = true;
@@ -33,9 +31,7 @@ namespace Sunnfolk_Complete.Scripts.Player
         private void Update()
         {
             UpdateMovement();
-            UpdateGoalManager();
             UpdateShooting();
-            print(score);
         }
         
         private void OnTriggerEnter2D(Collider2D col)
@@ -70,20 +66,10 @@ namespace Sunnfolk_Complete.Scripts.Player
                 projectileC.direction = _mShootVector;
 
                 projectileC.relativeSpeed = relativeProjectileSpeed && _mMoveVector != Vector2.zero ? move : Vector2.zero;
-
-
+                
                 Destroy(clone, 2f);
                 _mShootTimer = Time.time + shootTimeBuffer;
             }
-        }
-
-        private void UpdateGoalManager()
-        {
-            // CHECK IF SCORE IS GREATER OR EQUAL TO GOAL
-            if (score < goal) return;
-        
-            score = 0;
-           // SceneManager.LoadScene($"EndScreen");
         }
 
         private void UpdateMovement()
@@ -101,7 +87,6 @@ namespace Sunnfolk_Complete.Scripts.Player
             // APPLY INPUT & SPEED TO MOVEMENT
             move = _mMoveVector * speed;
             transform.Translate(move * Time.deltaTime);
-        
         }
     }
 }

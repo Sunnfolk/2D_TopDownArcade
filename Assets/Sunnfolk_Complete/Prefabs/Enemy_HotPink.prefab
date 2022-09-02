@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2673073901035018234}
   - component: {fileID: 2673073901035018233}
   - component: {fileID: 2673073901035018237}
-  - component: {fileID: 3936452806971384156}
   m_Layer: 0
   m_Name: Enemy_HotPink
   m_TagString: Enemy
@@ -32,9 +31,10 @@ Transform:
   m_LocalPosition: {x: 7.21, y: -6.29, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8374309248428690463}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2673073901035018235
 SpriteRenderer:
@@ -139,17 +139,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyMoveSpeed: 3
   directionUpdateInt: 2
+  lookRadius: 8
   enemyHealth: 3
   fullHealth: {r: 1, g: 0, b: 0.43529412, a: 1}
   bruised: {r: 0.6603774, g: 0, b: 0.30817613, a: 1}
   injured: {r: 0.46226418, g: 0.09245285, b: 0, a: 1}
---- !u!58 &3936452806971384156
+--- !u!1 &8963499097425014613
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8374309248428690463}
+  - component: {fileID: 8046852988154607157}
+  m_Layer: 3
+  m_Name: Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8374309248428690463
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8963499097425014613}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2673073901035018236}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &8046852988154607157
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2673073901035018232}
+  m_GameObject: {fileID: 8963499097425014613}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}

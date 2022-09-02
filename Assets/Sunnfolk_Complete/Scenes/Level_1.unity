@@ -632,7 +632,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyNumber: 0
   scoreNumber: 0
-  Goal: 10
+  goal: 10
 --- !u!4 &567698855
 Transform:
   m_ObjectHideFlags: 0
@@ -1952,6 +1952,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2804003979552362842, guid: dd2b89683b6944180936fc6c2f464603, type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804003979552362842, guid: dd2b89683b6944180936fc6c2f464603, type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []

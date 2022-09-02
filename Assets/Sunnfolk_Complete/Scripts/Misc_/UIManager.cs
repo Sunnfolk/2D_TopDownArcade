@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Sunnfolk_Complete.Scripts.Misc_
 {
-    public class UI_Manager : MonoBehaviour
+    public class UIManager : MonoBehaviour
     {
 
         public PlayerController player;

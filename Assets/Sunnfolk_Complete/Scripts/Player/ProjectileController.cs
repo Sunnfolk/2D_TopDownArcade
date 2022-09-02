@@ -17,19 +17,15 @@ namespace Sunnfolk_Complete.Scripts.Player
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            if (col.transform.CompareTag($"Complete/Coin"))
-            {
-                Destroy(col.gameObject);
-            
-                Destroy(gameObject);
-            }
-
-            if (col.transform.CompareTag("Enemy"))
+            if (col.transform.CompareTag($"Enemy"))
             {
                 col.TryGetComponent(out EnemyController controller);
                 controller.enemyHealth--;
-                Destroy(gameObject);
             }
+            
+            // NO CODE BELOW THIS POINT
+            if (col.CompareTag("Player") || col.CompareTag($"Complete/Coin")) return;
+                Destroy(gameObject);
         }
     }
 }
