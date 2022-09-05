@@ -93,17 +93,16 @@ namespace Sunnfolk_Complete.Scripts.Enemy
             
             Debug.DrawRay(position1, position2 - position1, Color.cyan);
             
-            print(hit.collider.name);
+            print(hit.collider.transform.name);
             
             if (hit.collider == null) return;
-            if (distance > lookRadius && !hit.collider.CompareTag("Player")) return;
+            if (distance > lookRadius || !hit.collider.CompareTag("Player")) return;
             
             if (Time.time > _timer)
             {
                 _moveDirection = (_target.transform.position - transform.position).normalized;
                 _timer = Time.time + directionUpdateInt;
             }
-
             transform.Translate(_moveDirection * (enemyMoveSpeed * Time.deltaTime));
         }
 
