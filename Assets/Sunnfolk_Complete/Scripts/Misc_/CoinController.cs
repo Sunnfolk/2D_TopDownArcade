@@ -29,7 +29,7 @@ namespace Sunnfolk_Complete.Scripts.Misc_
         private void UpdateRotation()
         {
             var transform1 = transform;
-            transform1.eulerAngles = new Vector3(0f, transform1.eulerAngles.y + rotationSpeed, 0f);
+            transform1.eulerAngles = new Vector3(0f, transform1.eulerAngles.y + rotationSpeed*Time.deltaTime, 0f);
         }
     }
 }
