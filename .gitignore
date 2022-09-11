@@ -72,3 +72,9 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 Unity.gitignore
 Assets/.DS_Store
+.DS_Store
+.idea/.DS_Store
+Assets/.DS_Store
+Assets/Sunnfolk_Complete/.DS_Store
+Assets/TextMesh Pro/.DS_Store
+Assets/TextMesh Pro/Resources/.DS_Store
